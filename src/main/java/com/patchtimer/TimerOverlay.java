@@ -6,12 +6,6 @@ import net.runelite.api.coords.LocalPoint;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
-import net.runelite.client.ui.overlay.OverlayUtil;
-import java.awt.Polygon;
-import java.awt.Shape;
-import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.coords.LocalPoint;
-import net.runelite.client.ui.overlay.outline.ModelOutlineRenderer;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -21,7 +15,6 @@ public class TimerOverlay extends Overlay{
     private final PatchTimerPlugin plugin;
     private final PatchTimerConfig config;
     private final Client client;
-//    private final WorldView wv;
 
     @Inject
     TimerOverlay(PatchTimerPlugin plugin, PatchTimerConfig config, Client client ){
@@ -30,19 +23,16 @@ public class TimerOverlay extends Overlay{
     this.plugin = plugin;
     this.config = config;
     this.client = client;
-//    this.wv = wv;
     }
 
     @Override
     public Dimension render(Graphics2D graphics) {
         final int backgroundSize = this.config.getBackgroundSize();
         final Color colorBackground = this.config.getBackgroundColor();
-//        final int fontSize = this.config.getFontSize();
         final Color colorText = this.config.getTextColor();
         final Color tick_early_color = this.config.getTick_early_color();
         final Color tick_perfect_color = this.config.getTick_perfect_color();
         final Color tick_late_color = this.config.getTick_late_color();
-        final boolean assumeTick = this.config.getAssumeTick();
 
         this.plugin.getTreeTimerList().forEach(TreeTimer -> {
             final String text = TreeTimer.getTicksLeftDisplay();

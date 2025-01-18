@@ -28,24 +28,13 @@ public interface PatchTimerConfig extends Config {
 	@ConfigItem(
 			keyName = "backgroundColor",
 			name = "Background Color",
-			description = "The Color the timer background should be",
+			description = "The color the timer background should be",
 			position = 1,
 			section = timerSettings
 	)
 	default Color getBackgroundColor() {
 		return new Color(0,0,0,167);
 	}
-
-//	@ConfigItem(
-//			position = 2,
-//			keyName = "fontSize",
-//			name = "Font size",
-//			description = "Size of the font to use for XP drops. Only works with custom font.",
-//			section = timerSettings
-//	)
-//	default int getFontSize() {
-//		return 12;
-//	}
 
 	@ConfigItem(
 			keyName = "textColor",
@@ -60,8 +49,8 @@ public interface PatchTimerConfig extends Config {
 
 	@ConfigItem(
 			keyName = "tick_early_color",
-			name = "Tick Early color",
-			description = "The color being 1t early",
+			name = "Early Tick Color",
+			description = "The color to be 1t early to chop on tree respawn",
 			position = 4,
 			section = timerSettings
 	)
@@ -70,8 +59,8 @@ public interface PatchTimerConfig extends Config {
 	}
 	@ConfigItem(
 			keyName = "tick_perfect_color",
-			name = "Tick perfect color",
-			description = "The color for being tick perfect chop on tree respawn",
+			name = "Perfect Tick Color",
+			description = "The color to be tick perfect to chop on tree respawn",
 			position = 5,
 			section = timerSettings
 	)
@@ -81,7 +70,7 @@ public interface PatchTimerConfig extends Config {
 	@ConfigItem(
 			keyName = "tick_late_color",
 			name = "Late Tick Color",
-			description = "The color for being 1 tick late to respawn",
+			description = "The color to be 1 tick late to chop on tree respawn",
 			position = 6,
 			section = timerSettings
 	)

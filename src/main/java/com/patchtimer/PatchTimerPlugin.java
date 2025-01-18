@@ -2,29 +2,25 @@ package com.patchtimer;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
-
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
-import net.runelite.api.GameState;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
-import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.StatChanged;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
-
 import java.util.LinkedList;
 import java.util.List;
 
 @Slf4j
 @PluginDescriptor(
-	name = "1.5 Teaks"
+	name = "1.5 Woodcutting"
 )
 
 public class PatchTimerPlugin extends Plugin
@@ -32,13 +28,14 @@ public class PatchTimerPlugin extends Plugin
 	static final int LEFT_TREE = 4771;
 	static final int MIDDLE_TREE = 4772;
 	static final int RIGHT_TREE = 4773;
-	static final int TREE_STUMP = 17;
+	static final int TEAK_STUMP = 17;
+	static final int MAHOGANY_STUMP = 40;
 
 	static final int TEAK_XP = 85;
 	static final int MAHOGANY_XP = 125;
 
 	static final int TEAK_RESPAWN = 18;
-	static final int MAHOGANY_RESPAWN = 40;
+	static final int MAHOGANY_RESPAWN = 41;
 
 	@Getter
 	private final List<TreeTimer> treeTimerList = new LinkedList<>();
@@ -76,7 +73,7 @@ public class PatchTimerPlugin extends Plugin
 	public void onVarbitChanged(VarbitChanged event)
 	{
 		if ((event.getVarbitId() == LEFT_TREE || event.getVarbitId() == MIDDLE_TREE || event.getVarbitId() == RIGHT_TREE)
-				&& event.getValue() == TREE_STUMP) {
+				&& (event.getValue() == TEAK_STUMP || event.getValue() == MAHOGANY_STUMP)){
 			treeFell = true;
 			lastFallenTreeId= event.getVarbitId();
 			log.info("Tree Fell: ID = " + lastFallenTreeId);
