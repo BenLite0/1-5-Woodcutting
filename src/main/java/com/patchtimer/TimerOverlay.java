@@ -69,8 +69,8 @@ public class TimerOverlay extends Overlay{
     private void drawTextBackground(Graphics2D graphics, Point point, Color color, Rectangle2D textBounds, int size) {
         graphics.setColor(color);
 
-        final int x = (int) (point.getX() - (size / 2) + (textBounds.getWidth() / 2));
-        final int y = (int) (point.getY() - (size / 2) - (textBounds.getHeight() / 2));
+        final int x = (int) (point.getX() - ((double) size / 2) + (textBounds.getWidth() / 2));
+        final int y = (int) (point.getY() - ((double) size / 2) - (textBounds.getHeight() / 2));
 
         graphics.fillRect(x, y, size, size);
     }

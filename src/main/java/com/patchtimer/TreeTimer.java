@@ -10,7 +10,6 @@ public class TreeTimer{
     private final WorldPoint location;
     private String ticksLeftDisplay;
     private int ticksLeft;
-    private GameObject object;
 
     TreeTimer(WorldPoint location, int respawnTime) {
         this.ticksLeft = respawnTime;

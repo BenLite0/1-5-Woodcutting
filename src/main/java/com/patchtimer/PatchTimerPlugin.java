@@ -93,20 +93,20 @@ public class PatchTimerPlugin extends Plugin
 			int teakRespawn = config.getAssumeTick() ? TEAK_RESPAWN -1 : TEAK_RESPAWN;
 			int mahoganyRespawn = config.getAssumeTick() ? MAHOGANY_RESPAWN -1 : MAHOGANY_RESPAWN;
 
-			if (isInRange(skillGained, TEAK_XP, 1.13)) {
+			if (isInRange(skillGained, TEAK_XP)) {
 				log.info("Single Teak log");
 				addTreeTimer(lastFallenTreeId, teakRespawn);
 			}
-			else if (isInRange(skillGained, MAHOGANY_XP, 1.13)) {
+			else if (isInRange(skillGained, MAHOGANY_XP)) {
 				log.info("Single Mahogany log");
 				addTreeTimer(lastFallenTreeId, mahoganyRespawn);
 			}
-		else if (isInRange(skillGained, TEAK_XP * 2, 1.13)) {
+		else if (isInRange(skillGained, TEAK_XP * 2)) {
 		log.info("Double Teak log");
 		addTreeTimer(lastFallenTreeId, TEAK_RESPAWN);
 		}
 
-		else if (isInRange(skillGained, MAHOGANY_XP * 2, 1.13)) {
+		else if (isInRange(skillGained, MAHOGANY_XP * 2)) {
 		log.info("Double Mahogany log");
 		addTreeTimer(lastFallenTreeId, MAHOGANY_RESPAWN);
 			}
@@ -149,9 +149,9 @@ private WorldPoint getTreeLocation(int treeId)
 				return TreeTimer.getTicksLeft() < 0;
 			});
 	}
-private boolean isInRange(int value, int base, double tolerance)
+private boolean isInRange(int value, int base)
 {
-	return value >= base && value <= base * tolerance;
+	return value >= base && value <= base * 1.13;
 }
 	@Provides
 	PatchTimerConfig provideConfig(ConfigManager configManager)
