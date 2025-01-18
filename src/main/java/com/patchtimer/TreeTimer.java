@@ -1,7 +1,6 @@
 package com.patchtimer;
 
 import lombok.Getter;
-import net.runelite.api.GameObject;
 import net.runelite.api.coords.WorldPoint;
 
 
