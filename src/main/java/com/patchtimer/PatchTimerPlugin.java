@@ -76,7 +76,7 @@ public class PatchTimerPlugin extends Plugin
 				&& (event.getValue() == TEAK_STUMP || event.getValue() == MAHOGANY_STUMP)){
 			treeFell = true;
 			lastFallenTreeId= event.getVarbitId();
-			log.info("Tree Fell: ID = " + lastFallenTreeId);
+			log.debug("Tree Fell: ID = " + lastFallenTreeId);
 		}
 	}
 	@Subscribe
@@ -94,20 +94,20 @@ public class PatchTimerPlugin extends Plugin
 			int mahoganyRespawn = config.getAssumeTick() ? MAHOGANY_RESPAWN -1 : MAHOGANY_RESPAWN;
 
 			if (isInRange(skillGained, TEAK_XP)) {
-				log.info("Single Teak log");
+				log.debug("Single Teak log");
 				addTreeTimer(lastFallenTreeId, teakRespawn);
 			}
 			else if (isInRange(skillGained, MAHOGANY_XP)) {
-				log.info("Single Mahogany log");
+				log.debug("Single Mahogany log");
 				addTreeTimer(lastFallenTreeId, mahoganyRespawn);
 			}
 		else if (isInRange(skillGained, TEAK_XP * 2)) {
-		log.info("Double Teak log");
+		log.debug("Double Teak log");
 		addTreeTimer(lastFallenTreeId, TEAK_RESPAWN);
 		}
 
 		else if (isInRange(skillGained, MAHOGANY_XP * 2)) {
-		log.info("Double Mahogany log");
+		log.debug("Double Mahogany log");
 		addTreeTimer(lastFallenTreeId, MAHOGANY_RESPAWN);
 			}
 			treeFell = false;
@@ -120,7 +120,7 @@ private void addTreeTimer(int treeId, int respawnDuration)
 	if (treeLocation != null)
 	{
 		treeTimerList.add(new TreeTimer(treeLocation, respawnDuration));
-		log.info("Added TreeTimer for Tree ID " + treeId + " at " + treeLocation + " with respawn duration " + respawnDuration);
+		log.debug("Added TreeTimer for Tree ID " + treeId + " at " + treeLocation + " with respawn duration " + respawnDuration);
 	}
 	else
 	{
