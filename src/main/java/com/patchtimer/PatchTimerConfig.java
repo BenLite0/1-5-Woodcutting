@@ -32,6 +32,8 @@ public interface PatchTimerConfig extends Config {
 			position = 1,
 			section = timerSettings
 	)
+
+	@Alpha
 	default Color getBackgroundColor() {
 		return new Color(0,0,0,167);
 	}
